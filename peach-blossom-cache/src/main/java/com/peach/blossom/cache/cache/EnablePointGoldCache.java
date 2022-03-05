@@ -1,4 +1,4 @@
-package com.peacn.blossom.cache.cache;
+package com.peach.blossom.cache.cache;
 
 import org.springframework.context.annotation.Import;
 

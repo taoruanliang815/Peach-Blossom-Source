@@ -1,4 +1,4 @@
-package com.peacn.blossom.cache.util;
+package com.peach.blossom.cache.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

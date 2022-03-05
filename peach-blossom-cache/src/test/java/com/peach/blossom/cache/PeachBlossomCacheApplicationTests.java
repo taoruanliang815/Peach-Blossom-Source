@@ -1,4 +1,4 @@
-package com.peacn.blossom.cache;
+package com.peach.blossom.cache;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

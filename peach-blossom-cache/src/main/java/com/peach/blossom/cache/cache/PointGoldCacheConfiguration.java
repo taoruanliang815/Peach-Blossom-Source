@@ -1,4 +1,4 @@
-package com.peacn.blossom.cache.cache;
+package com.peach.blossom.cache.cache;
 
 import com.peach.blossom.cache.aop.PointGoldCacheAop;
 import com.peach.blossom.cache.parser.PointGoldCacheAnnotationParser;

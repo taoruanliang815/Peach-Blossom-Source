@@ -1,4 +1,4 @@
-package com.peacn.blossom.cache.parser;
+package com.peach.blossom.cache.parser;
 
 import com.peach.blossom.cache.cache.PointGoldCache;
 import com.peach.blossom.cache.cache.PointGoldCacheTypeEnum;

@@ -1,4 +1,4 @@
-package com.peacn.blossom.cache.cache;
+package com.peach.blossom.cache.cache;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
