@@ -10,11 +10,11 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
-public @interface PointGoldCache {
+public @interface BlossomCache {
 
-    PointGoldCacheKeyEnum key();
+    BlossomCacheKeyEnum key();
 
-    PointGoldCacheTypeEnum type();
+    BlossomCacheTypeEnum type();
 
-    PointGoldCacheManagerEnum cacheManager() default PointGoldCacheManagerEnum.LOCAL_MANAGER;
+    BlossomCacheManagerEnum cacheManager() default BlossomCacheManagerEnum.LOCAL_MANAGER;
 }

@@ -5,13 +5,15 @@ import lombok.Getter;
 
 /**
  * @author taoruanliang
- * @date 2022/2/21 10:28
+ * @date 2022/2/17 11:23
  */
 @Getter
 @AllArgsConstructor
-public enum PointGoldCacheKeyEnum {
+public enum BlossomCacheTypeEnum {
 
-    APPID_USERNAME("APPID_USERNAME");
+    SENDER(1),
 
-    private String key;
+    RECEIVER(2);
+
+    private Integer type;
 }

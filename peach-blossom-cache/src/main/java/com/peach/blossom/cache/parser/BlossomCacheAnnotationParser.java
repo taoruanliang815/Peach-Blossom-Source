@@ -1,7 +1,7 @@
 package com.peach.blossom.cache.parser;
 
-import com.peach.blossom.cache.cache.PointGoldCache;
-import com.peach.blossom.cache.cache.PointGoldCacheTypeEnum;
+import com.peach.blossom.cache.cache.BlossomCache;
+import com.peach.blossom.cache.cache.BlossomCacheTypeEnum;
 import org.apache.commons.lang3.ArrayUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 
@@ -13,20 +13,20 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author taoruanliang
  * @date 2022/2/17 10:43
  */
-public class PointGoldCacheAnnotationParser {
+public class BlossomCacheAnnotationParser {
 
     private Map cacheMap = new ConcurrentHashMap<>();
 
     private static final String UNDER_LINE = "_";
 
-    public Object parse(PointGoldCache pointGoldCache, ProceedingJoinPoint joinPoint, Object[] args,
+    public Object parse(BlossomCache blossomCache, ProceedingJoinPoint joinPoint, Object[] args,
                         String[] parameterNames) throws Throwable {
 
-        if (pointGoldCache == null || ArrayUtils.isEmpty(args) || ArrayUtils.isEmpty(parameterNames)) {
+        if (blossomCache == null || ArrayUtils.isEmpty(args) || ArrayUtils.isEmpty(parameterNames)) {
             return joinPoint.proceed(args);
         }
 
-        String[] keyArr = pointGoldCache.key().getKey().split(UNDER_LINE);
+        String[] keyArr = blossomCache.key().getKey().split(UNDER_LINE);
 
         if (!necessary(keyArr, parameterNames)) {
             return joinPoint.proceed(args);
@@ -34,13 +34,13 @@ public class PointGoldCacheAnnotationParser {
 
         String cacheKey = parseKey(keyArr, args, parameterNames);
 
-        if (PointGoldCacheTypeEnum.SENDER.compareTo(pointGoldCache.type()) == 0) {
+        if (BlossomCacheTypeEnum.SENDER.compareTo(blossomCache.type()) == 0) {
             Object result = joinPoint.proceed(args);
-            return send(pointGoldCache.key().getKey(), cacheKey, result);
+            return send(blossomCache.key().getKey(), cacheKey, result);
         }
 
-        if (PointGoldCacheTypeEnum.RECEIVER.compareTo(pointGoldCache.type()) == 0) {
-            Object cacheValue = receive(pointGoldCache.key().getKey(), cacheKey, joinPoint, args);
+        if (BlossomCacheTypeEnum.RECEIVER.compareTo(blossomCache.type()) == 0) {
+            Object cacheValue = receive(blossomCache.key().getKey(), cacheKey, joinPoint, args);
             if (cacheValue != null) {
                 return cacheValue;
             }

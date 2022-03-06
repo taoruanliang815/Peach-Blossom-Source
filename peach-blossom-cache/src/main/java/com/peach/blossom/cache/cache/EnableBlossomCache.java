@@ -11,7 +11,7 @@ import java.lang.annotation.*;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import(PointGoldCacheConfiguration.class)
-public @interface EnablePointGoldCache {
+@Import(BlossomCacheConfiguration.class)
+public @interface EnableBlossomCache {
 
 }

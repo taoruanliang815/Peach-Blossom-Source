@@ -9,7 +9,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum PointGoldCacheManagerEnum {
+public enum BlossomCacheManagerEnum {
 
     GUAVA_MANAGER("GUAVA_MANAGER"),
 
