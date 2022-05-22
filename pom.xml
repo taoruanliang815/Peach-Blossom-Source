@@ -10,9 +10,6 @@
     <name>peach-blossom-source</name>
 
     <modules>
-        <module>peach-blossom-api</module>
-        <module>peach-blossom-common</module>
-        <module>peach-blossom-config</module>
         <module>peach-blossom-starter</module>
         <module>peach-blossom-cache</module>
     </modules>
