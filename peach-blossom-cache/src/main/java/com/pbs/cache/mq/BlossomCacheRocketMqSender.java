@@ -23,13 +23,13 @@ import java.util.Objects;
 @Slf4j
 public class BlossomCacheRocketMqSender {
 
-    @Value("${rocketmq.pgCacheTopic:topic_zd-component-cache}")
+    @Value("${rocketmq.pgCacheTopic:topic_blossom-cache}")
     private String topic;
 
-    @Value("${rocketmq.producer.pgCache:pid_zd-component-cache}")
+    @Value("${rocketmq.producer.pgCache:pid_topic_blossom-cache}")
     private String pid;
 
-    @Value("${rocketmq.pgCacheServer:pg}")
+    @Value("${rocketmq.blossomServer:blossom}")
     private String pgCacheServer;
 
     private DefaultMQProducer producer;
@@ -40,7 +40,7 @@ public class BlossomCacheRocketMqSender {
         Assert.hasText(pgCacheServer, "[rocketmq.name-server] must not be null");
 
         producer = new DefaultMQProducer(pid, true);
-        producer.setInstanceName("pgCache:" + UtilAll.getPid());
+        producer.setInstanceName("blossomCache:" + UtilAll.getPid());
         producer.setNamesrvAddr(pgCacheServer);
         producer.setSendMsgTimeout(6000);
         producer.setRetryTimesWhenSendFailed(2);
