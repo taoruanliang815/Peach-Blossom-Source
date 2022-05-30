@@ -25,26 +25,30 @@ public class BlossomCacheAnnotationParser {
             return joinPoint.proceed(args);
         }
 
-        String cacheKey = ExpressionParser.parseKey(joinPoint, blossomCache.key());
+        String cacheKey = ExpressionParser.parseKey(joinPoint, blossomCache.cacheKey());
 
-        return doGetCache(cacheKey, joinPoint, args);
+        return doGetCache(blossomCache, cacheKey, joinPoint, args);
     }
 
-    private Object doGetCache(String cacheKey, ProceedingJoinPoint joinPoint, Object[] args) throws Throwable {
-        Object result = BlossomCacheManager.get(cacheKey);
+    private Object doGetCache(BlossomCache blossomCache, String cacheKey, ProceedingJoinPoint joinPoint, Object[] args) throws Throwable {
+        String businessKey = blossomCache.businessKey();
+        Object result = BlossomCacheManager.getLocalCache(businessKey).get(cacheKey);
         if (result == null) {
             result = joinPoint.proceed(args);
-            BlossomCacheManager.put(cacheKey, result);
-            syncCache(cacheKey, result);
+            BlossomCacheManager.getLocalCache(businessKey).put(cacheKey, result);
+            if (blossomCache.isRemote()) {
+                syncCache(businessKey, cacheKey, result);
+            }
         }
         return result;
     }
 
-    private Object syncCache(String cacheKey, Object result){
+    private Object syncCache(String businessKey, String cacheKey, Object result) {
         BlossomCacheMessage message = new BlossomCacheMessage();
         message.setType(BlossomCacheSyncTypeEnum.CACHE.getType());
         message.setCacheKey(cacheKey);
         message.setResult(result);
+        message.setBusinessKey(businessKey);
         blossomCacheRocketMqSender.syncSend(message);
         return result;
     }

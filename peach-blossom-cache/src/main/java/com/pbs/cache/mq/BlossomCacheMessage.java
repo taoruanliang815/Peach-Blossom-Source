@@ -11,6 +11,8 @@ public class BlossomCacheMessage {
 
     private Integer type;
 
+    private String businessKey;
+
     private String cacheKey;
 
     private Object result;

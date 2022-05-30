@@ -14,6 +14,25 @@ import java.lang.annotation.*;
 @Documented
 public @interface BlossomEvict {
 
-    String key();
+    /**
+     * 业务key
+     *
+     * @return
+     */
+    String businessKey() default "businessKey";
+
+    /**
+     * 缓存key
+     *
+     * @return
+     */
+    String cacheKey();
+
+    /**
+     * 是否通过MQ远程清除缓存
+     *
+     * @return
+     */
+    boolean isRemote() default false;
 
 }
