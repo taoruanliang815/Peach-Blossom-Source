@@ -15,12 +15,8 @@ import java.util.concurrent.locks.LockSupport;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 数量
- *
- * @author : longchuan
- * @version :
- * @date : 2021/12/27 11:57 上午
- * @description:
+ * @author taoruanliang
+ * @date 2022/2/17 10:43
  */
 @Slf4j
 public class CountQueuedSynchronizer {

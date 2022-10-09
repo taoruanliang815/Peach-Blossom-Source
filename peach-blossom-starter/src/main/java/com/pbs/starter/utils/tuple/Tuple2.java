@@ -5,11 +5,8 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 多状态实体
- * @author Mr.Xihua
- * @email xihua.zh@raycloud.com
- * @date 2021-07-29 10:36
- * @description
+ * @author taoruanliang
+ * @date 2022/2/17 10:43
  */
 @Data
 public class Tuple2<K, V> implements Serializable {

@@ -8,12 +8,8 @@ import java.time.LocalDateTime;
 import java.util.function.Supplier;
 
 /**
- * 等待公平队列
- *
- * @author : longchuan
- * @version :
- * @date : 2021/12/28 9:55 上午
- * @description:
+ * @author taoruanliang
+ * @date 2022/2/17 10:43
  */
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
