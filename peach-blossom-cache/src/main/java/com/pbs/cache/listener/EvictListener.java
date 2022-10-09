@@ -18,6 +18,6 @@ public class EvictListener implements Listener {
     @Override
     public void onEvent(Event event) {
         EvictEvent evictEvent = (EvictEvent) event;
-        BlossomCacheManager.remove(evictEvent.getCacheKey());
+        BlossomCacheManager.getLocalCache(evictEvent.getBusinessKey()).remove(evictEvent.getCacheKey());
     }
 }

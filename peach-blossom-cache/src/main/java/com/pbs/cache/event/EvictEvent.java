@@ -11,5 +11,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class EvictEvent extends Event {
 
+    private String businessKey;
+
     private String cacheKey;
 }

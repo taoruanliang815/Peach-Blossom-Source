@@ -14,9 +14,9 @@ public class Event {
 
         switch (BlossomCacheSyncTypeEnum.getEnum(message.getType())) {
             case CACHE:
-                return new CacheEvent(message.getCacheKey(), message.getResult());
+                return new CacheEvent(message.getBusinessKey(), message.getCacheKey(), message.getResult());
             case EVICT:
-                return new EvictEvent(message.getCacheKey());
+                return new EvictEvent(message.getBusinessKey(), message.getCacheKey());
             default:
                 return null;
         }

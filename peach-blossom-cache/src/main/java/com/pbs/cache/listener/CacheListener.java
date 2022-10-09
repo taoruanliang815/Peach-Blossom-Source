@@ -17,6 +17,6 @@ public class CacheListener implements Listener {
     @Override
     public void onEvent(Event event) {
         CacheEvent cacheEvent = (CacheEvent) event;
-        BlossomCacheManager.put(cacheEvent.getCacheKey(), cacheEvent.getResult());
+        BlossomCacheManager.getLocalCache(cacheEvent.getBusinessKey()).put(cacheEvent.getCacheKey(), cacheEvent.getResult());
     }
 }

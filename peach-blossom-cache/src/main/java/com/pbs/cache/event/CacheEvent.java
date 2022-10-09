@@ -12,6 +12,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class CacheEvent extends Event {
 
+    private String businessKey;
+
     private String cacheKey;
 
     private Object result;
