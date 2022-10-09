@@ -123,7 +123,7 @@ public class CountQueuedSynchronizer {
     /**
      * 内部aqs
      *
-     * @author : longchuan
+     * @author : taoruanliang
      * @version :
      * @date : 2021/12/27 1:35 下午
      * @description:
