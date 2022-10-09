@@ -1,4 +1,4 @@
-package com.pbs.starter.utils.aqs;
+package com.pbs.cache.utils.aqs;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

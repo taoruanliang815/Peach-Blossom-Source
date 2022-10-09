@@ -1,4 +1,4 @@
-package com.pbs.starter.utils.tuple;
+package com.pbs.cache.utils.tuple;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
-package com.pbs.starter.utils.aqs;
+package com.pbs.cache.utils.aqs;
 
-import com.pbs.starter.utils.tuple.Tuple2;
+import com.pbs.cache.utils.tuple.Tuple2;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
