@@ -154,25 +154,11 @@ public class CountQueuedSynchronizer {
             return Boolean.TRUE;
         }
 
-        /**
-         * 尝试获取
-         *
-         * @param
-         * @return
-         * @description:
-         */
         @Override
         protected int tryAcquireShared(int acquires) {
             return this.getState() == 0 ? 1 : -1;
         }
 
-        /**
-         * 尝试释放
-         *
-         * @param
-         * @return
-         * @description:
-         */
         @Override
         protected boolean tryReleaseShared(int releases) {
             int c;
