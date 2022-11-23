@@ -3,6 +3,7 @@ package com.pbs.cache.mq;
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Throwables;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
@@ -40,7 +41,7 @@ public class BlossomCacheRocketMqSender {
         Assert.hasText(pgCacheServer, "[rocketmq.name-server] must not be null");
 
         producer = new DefaultMQProducer(pid, true);
-        producer.setInstanceName("blossomCache:" + UtilAll.getPid());
+        producer.setInstanceName("blossomCache:" + UtilAll.getPid() + "_" + RandomUtils.nextInt());
         producer.setNamesrvAddr(pgCacheServer);
         producer.setSendMsgTimeout(6000);
         producer.setRetryTimesWhenSendFailed(2);
