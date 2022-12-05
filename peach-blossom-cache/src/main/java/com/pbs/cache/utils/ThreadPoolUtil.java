@@ -18,7 +18,7 @@ public class ThreadPoolUtil {
 
     public synchronized static ExecutorService getThreadPoll(String key) {
         if (!THREAD_POOL_MAP.containsKey(key)) {
-            ExecutorService THREAD_POLL = new ThreadPoolExecutor(8, 10, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(5000),
+            ExecutorService THREAD_POLL = new ThreadPoolExecutor(100, 1000, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(5000),
                     runnable -> new Thread(runnable, key + ATOMIC_THREAD_COUNT.incrementAndGet()));
             THREAD_POOL_MAP.put(key, THREAD_POLL);
         }

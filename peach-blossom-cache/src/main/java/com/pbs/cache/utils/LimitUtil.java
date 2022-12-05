@@ -1,7 +1,9 @@
 package com.pbs.cache.utils;
 
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.LockSupport;
 import java.util.function.Supplier;
 
 /**
@@ -17,18 +19,29 @@ public class LimitUtil {
     public static class Limit {
 
         private Semaphore semaphore;
+        private ArrayBlockingQueue<Thread> queue;
 
         Limit(Integer permits) {
             semaphore = new Semaphore(permits, true);
+            queue = new ArrayBlockingQueue<>(1024, true);
         }
 
         public void lock() {
-            System.out.println("当前线程数:" + semaphore.availablePermits() + ",当前等待数:" + semaphore.getQueueLength());
-            semaphore.tryAcquire();
+            System.out.println("当前线程数:" + semaphore.availablePermits() + ",当前等待数:" + queue.toArray().length);
+            Boolean flag = semaphore.tryAcquire();
+            if (!flag) {
+                Thread thread = Thread.currentThread();
+                queue.offer(thread);
+                LockSupport.park(thread);
+                queue.remove(thread);
+                lock();
+            }
         }
 
         public void unLock() {
             semaphore.release();
+            Thread thread = queue.poll();
+            LockSupport.unpark(thread);
         }
     }
 
@@ -55,12 +68,14 @@ public class LimitUtil {
         for (int i = 0; i <= 100; i++) {
             int finalI = i;
             ThreadPoolUtil.getThreadPoll("a").execute(() -> {
-                try {
-                    Thread.sleep(100L);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println(LimitUtil.limit(() -> finalI, "code", 5));
+                System.out.println(LimitUtil.limit(() -> {
+                    try {
+                        Thread.sleep(200L);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    return finalI;
+                }, "code", 5));
             });
         }
     }
