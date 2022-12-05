@@ -27,7 +27,6 @@ public class LimitUtil {
         }
 
         public void lock() {
-            System.out.println("当前线程数:" + semaphore.availablePermits() + ",当前等待数:" + queue.toArray().length);
             Boolean flag = semaphore.tryAcquire();
             if (!flag) {
                 Thread thread = Thread.currentThread();
