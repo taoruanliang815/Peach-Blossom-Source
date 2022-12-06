@@ -1,4 +1,4 @@
-package com.pbs.cache.utils;
+package com.pbs.common.utils;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,7 +14,7 @@ import java.util.function.Supplier;
  */
 public class LimitUtil {
 
-    private static final ConcurrentHashMap<String, LimitUtil.Limit> limitMap = new ConcurrentHashMap<>();
+    private static final ConcurrentHashMap<String, Limit> limitMap = new ConcurrentHashMap<>();
 
     public static class Limit {
 
