@@ -20,6 +20,11 @@
             <groupId>com.peach.blossom</groupId>
             <artifactId>peach-blossom-cache</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.peach.blossom</groupId>
+            <artifactId>peach-blossom-common</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
