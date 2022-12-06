@@ -13,6 +13,7 @@
         <module>peach-blossom-starter</module>
         <module>peach-blossom-cache</module>
         <module>peach-blossom-common</module>
+        <module>peach-blossom-remote</module>
     </modules>
 
     <parent>

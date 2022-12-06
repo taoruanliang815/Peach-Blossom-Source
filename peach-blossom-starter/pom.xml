@@ -25,6 +25,11 @@
             <groupId>com.peach.blossom</groupId>
             <artifactId>peach-blossom-common</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.peach.blossom</groupId>
+            <artifactId>peach-blossom-remote</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
