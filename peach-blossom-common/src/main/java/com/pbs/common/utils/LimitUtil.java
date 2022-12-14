@@ -23,7 +23,7 @@ public class LimitUtil {
 
         Limit(Integer permits) {
             semaphore = new Semaphore(permits, true);
-            queue = new SynchronousQueue<>();
+            queue = new SynchronousQueue<>(true);
         }
 
         public void lock() {
