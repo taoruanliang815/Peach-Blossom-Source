@@ -1,8 +1,8 @@
 package com.pbs.common.utils;
 
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.locks.LockSupport;
 import java.util.function.Supplier;
 
@@ -19,11 +19,11 @@ public class LimitUtil {
     public static class Limit {
 
         private Semaphore semaphore;
-        private SynchronousQueue<Thread> queue;
+        private LinkedBlockingQueue<Thread> queue;
 
         Limit(Integer permits) {
             semaphore = new Semaphore(permits, true);
-            queue = new SynchronousQueue<>(true);
+            queue = new LinkedBlockingQueue<>();
         }
 
         public void lock() {
