@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2022/10/24 14:26
  */
 @Component
-public class TimOutUtil implements InitializingBean {
+public class DelayUtil implements InitializingBean {
 
     public static Timer timer;
 
