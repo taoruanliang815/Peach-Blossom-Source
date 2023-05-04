@@ -27,14 +27,14 @@ public class BlossomCacheRocketMqConsumer implements RocketMQListener<MessageExt
     public void onMessage(MessageExt message) {
 
         String msgStr = new String(message.getBody(), StandardCharsets.UTF_8);
-        log.info("[PointGoldCacheRocketMqConsumer] start:{}", msgStr);
+        log.info("[BlossomCacheRocketMqConsumer] start:{}", msgStr);
 
         try {
             BlossomCacheMessage blossomCacheMessage = JSON.parseObject(msgStr, BlossomCacheMessage.class);
 
             Publisher.publish(Event.event(blossomCacheMessage));
         } catch (Exception e) {
-            log.error("PointGoldCacheRocketMqConsumer error:{}", e.fillInStackTrace());
+            log.error("BlossomCacheRocketMqConsumer error:{}", e.fillInStackTrace());
         }
     }
 
